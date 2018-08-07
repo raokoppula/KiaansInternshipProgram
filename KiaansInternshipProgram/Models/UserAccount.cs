@@ -10,7 +10,7 @@ namespace KiaansInternshipProgram.Models
     [Table("tblUserAccount")]
     public class UserAccount
     {
-        //[Key]
+        [Key]
         [Required]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserAccountID { get; set; }
@@ -23,9 +23,12 @@ namespace KiaansInternshipProgram.Models
         [Required]
         public int UserAccountTypeID { get; set; }
 
+        public int? CareerResumeID { get; set; }
+
         [ForeignKey("UserAccountTypeID")]
         public virtual UserAccountType UserAccountType { get; set; }
 
+        [ForeignKey("CareerResumeID")]
         public virtual CareerResume CareerResume { get; set; }
 
         public UserAccount()
@@ -33,16 +36,4 @@ namespace KiaansInternshipProgram.Models
             
         }
     }
-
-    //TODO: UserAccount -> Dept
-    //UserAccountType - > EMP
-
-    //public enum UserAccountTypeEnum
-    //{
-    //    JobAspirant,
-    //    Intern,
-    //    CorporateTrainingTaker,
-    //    EmployerServicesUser,
-    //    KiaansEmployee
-    //}
 }

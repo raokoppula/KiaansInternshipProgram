@@ -20,7 +20,7 @@ namespace KiaansInternshipProgram.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UploadResume(Career career, HttpPostedFileBase file)
+        public ActionResult UploadResume(CareerResume careerResume, HttpPostedFileBase file)
         {
             if (file == null)
             {
@@ -41,17 +41,20 @@ namespace KiaansInternshipProgram.Controllers
                 {
                     string fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
                     file.SaveAs(Path.Combine(Server.MapPath("~/UploadResume"), fileName));
-                    
+
                     //TODO for CV upload to DB - Start
+                    careerResume.ResumeName = fileName;
+                    careerResume.UserAccountID = 1; //TODO: hotcoded for now, need to change this
+
                     CareerBL careerBL = new CareerBL();
-                    careerBL.UploadResume(career);
+                    careerBL.UploadResume(careerResume);
                         //careerBL.Resume = fileName;
                         //internshipDBContext.Careers.Add(career);
                         //internshipDBContext.SaveChanges();
                     //End
 
                     ModelState.Clear();
-                    career = null;
+                    careerResume = null;
                     ViewBag.Message = "Successfully Done";
                 }
                 catch (Exception ex)

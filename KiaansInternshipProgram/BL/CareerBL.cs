@@ -11,12 +11,14 @@ namespace KiaansInternshipProgram.BL
     {
         public virtual IEnumerable<Career> Careers { get; set; }
 
-        public void UploadResume(Career myCareer)
+        public void UploadResume(CareerResume careerResume)
         {
             //TODO
-            //InternshipDbContext internshipDbContext = new InternshipDbContext();
-            //internshipDbContext.Careers.Add(myCareer);
-            //internshipDbContext.SaveChanges();
+            using (var dbContext = new InternshipDbContext())
+            {
+                dbContext.CareerResumes.Add(careerResume);
+                dbContext.SaveChanges();
+            }
         }
     }
 }

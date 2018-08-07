@@ -21,7 +21,7 @@ namespace KiaansInternshipProgram.DAL
         public virtual DbSet<PostedBy> PersonPostedJobs { get; set; }
         public virtual DbSet<JobPostSkillSet> JobPostSkillsets { get; set; }
         public virtual DbSet<JobPostActivity> JobPostActivities { get; set; }
-        public virtual CareerResume CareerResume { get; set; }
+        public virtual DbSet<CareerResume> CareerResumes { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
 
         public InternshipDbContext() :  base("InternshipDbContext")
@@ -66,8 +66,13 @@ namespace KiaansInternshipProgram.DAL
             //TODO: Need to verify the below mapping once again
             modelBuilder.Entity<CareerResume>()
                       .HasOptional(e => e.UserAccount)
-                      .WithRequired(e=>e.CareerResume)
+                      .WithRequired(e => e.CareerResume)
                       .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<UserAccount>()
+            //          .HasOptional(e => e.CareerResume)
+            //          .WithRequired(e => e.UserAccount)
+            //          .WillCascadeOnDelete(false);
         }
     }
 }

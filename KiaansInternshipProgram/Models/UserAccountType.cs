@@ -25,3 +25,15 @@ namespace KiaansInternshipProgram.Models
         }
     }
 }
+
+//TODO: UserAccount -> Dept
+//UserAccountType - > EMP
+
+//public enum UserAccountTypeEnum
+//{
+//    JobAspirant,
+//    Intern,
+//    CorporateTrainingTaker,
+//    EmployerServicesUser,
+//    KiaansEmployee
+//}
