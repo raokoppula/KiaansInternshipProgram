@@ -1,0 +1,61 @@
+﻿@using KiaansInternshipProgram.ViewModels
+@model  JobPostServicesVM
+
+@{
+    ViewBag.Title = "JobPostingServices";
+}
+
+<h2>Job Posting services</h2>
+<form method="post" action="/CompanyZone/JobPostingServices">
+    <table border="0">
+        <tr>
+            <td>Job type: </td>
+            <td colspan="100">
+               @Html.DropDownListFor(m=>m.JobType, new SelectList(Model.JobTypes, "JobTypeID", "JobTypeName"), "---- Select----")
+            </td>
+        </tr>
+        <tr>
+            <td>Company: </td>
+            <td colspan="100">
+                @Html.DropDownListFor(m => m.Company, new SelectList(Model.Companies, "CompanyID", "Name"), "---- Select----")
+            </td>
+        </tr>
+        <tr>
+            <td>Job Location:</td>
+            <td colspan="100">
+                @Html.DropDownListFor(m => m.JobLocation, new SelectList(Model.JobLocations, "JobLocationID", "City"), "---- Select----")
+            </td>
+        </tr>
+        <tr>
+            <td>Jobpost Skillset</td>
+            <td colspan="100">
+                @Html.DropDownListFor(m => m.JobPostSkillSet, new SelectList(Model.JobPostSkillSets, "JobPostSkillSetID", "SkillName"), "---- Select----")
+            </td>
+        </tr>
+        <tr>
+            <td>Job Description: </td>
+            <td>@Html.TextAreaFor(m => m.JobDescription)</td>
+        </tr>
+        <tr>
+            <td>Is job active: </td>
+            <td>
+                @Html.RadioButtonFor(m => m.IsActive, "true") True
+                @Html.RadioButtonFor(m => m.IsActive, "false") False
+            </td>
+        </tr>
+        <tr>
+            <td>Is company name hidden: </td>
+            <td>
+                @Html.RadioButtonFor(m => m.IsCompanyNameHidden, "true") True
+                @Html.RadioButtonFor(m => m.IsCompanyNameHidden, "false") False
+            </td>
+        </tr>
+        <tr>
+            <td> <input type="submit" value="Post Job" id="btnSubmit" name="btnSubmit" /></td>
+            <td><input type="button" value="Cancel" id="btnCancel" name="btnCancel" /></td>
+        </tr>
+    </table>
+</form>
+<br />
+<br />
+@Html.ActionLink("back to Company Zone", "Index", "CompanyZone")

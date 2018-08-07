@@ -1,0 +1,39 @@
+﻿@using KiaansInternshipProgram.ViewModels
+@model List<CurrentJobPostVM>
+
+@{
+    ViewBag.Title = "CurrentJobs";
+}
+
+<h2>Current Jobs</h2>
+<table border="1">
+    <tr>
+        <a href=""><td>JobPostID</td></a>
+        <td>JobType</td>
+        <td>JobLocation</td>
+        <td>Company</td>
+        <td>Skillset</td>
+        <td>Job Description</td>
+        <td>is CompanyHidden</td>
+        <td>isJobActive</td>
+        <td>PostedBy</td>
+        <td>PostedDate</td>
+    </tr>
+    @foreach(CurrentJobPostVM post in Model)
+    {
+        <tr>
+            <td>@post.JobPostID</td>
+            <td>@post.JobTypeName</td>
+            <td>@post.JobLocationName</td>
+            <td>@post.CompanyName</td>
+            <td>@post.SkillSetName</td>
+            <td>@post.JobDescription</td>
+            <td>@post.IsCompanyNameHidden</td>
+            <td>@post.IsActive</td>
+            <td>@post.PostedByName</td>
+            <td>@post.CreatedDate</td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Back to Openings", "Index", "Openings")
+
