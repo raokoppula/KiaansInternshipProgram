@@ -9,6 +9,7 @@ namespace KiaansInternshipProgram.BL
 {
     public class CompanyBL
     {
+        #region GetJobTypes
         public List<JobType>GetJobTypes()
         {
             using (var dbContext = new InternshipDbContext())
@@ -16,7 +17,9 @@ namespace KiaansInternshipProgram.BL
                 return dbContext.JobTypes.ToList();
             }
         }
+        #endregion
 
+        #region GetJobLocations
         public List<JobLocation> GetJobLocations()
         {
             using (var dbContext = new InternshipDbContext())
@@ -24,7 +27,9 @@ namespace KiaansInternshipProgram.BL
                 return dbContext.JobLocations.ToList();
             }
         }
+        #endregion
 
+        #region GetCompanies
         public List<Company> GetCompanies()
         {
             using (var dbContext = new InternshipDbContext())
@@ -32,7 +37,9 @@ namespace KiaansInternshipProgram.BL
                 return dbContext.Companies.ToList();
             }
         }
+        #endregion
 
+        #region GetSkillsets
         public List<JobPostSkillSet> GetSkillsets()
         {
             using (var dbContext = new InternshipDbContext())
@@ -40,7 +47,9 @@ namespace KiaansInternshipProgram.BL
                 return dbContext.JobPostSkillsets.ToList();
             }
         }
+        #endregion
 
+        #region GetJobPostByPersons
         public List<PostedBy> GetJobPostByPersons()
         {
             using (var dbContext = new InternshipDbContext())
@@ -48,7 +57,9 @@ namespace KiaansInternshipProgram.BL
                 return dbContext.PersonPostedJobs.ToList();
             }
         }
+        #endregion
 
+        #region SaveJobPost
         public void SaveJobPost(JobPost jobPost)
         {
             using (var dbContext = new InternshipDbContext())
@@ -88,5 +99,6 @@ namespace KiaansInternshipProgram.BL
                 dbContext.SaveChanges();
             }
         }
+        #endregion
     }
 }
